@@ -32,7 +32,7 @@ public class HourlyFragment extends Fragment{
         @Override
         public void onReceive(Context context, Intent intent) {
             DataBlock hourlyData = ((MainActivity)getActivity()).weatherResponses.getHourly();
-            updateViews(hourlyData.getData(), ((MainActivity)getActivity()).weatherResponses.getOffset());
+            updateViews(hourlyData.getData());
         }
     };
 
@@ -50,8 +50,8 @@ public class HourlyFragment extends Fragment{
         return view;
     }
 
-    private void updateViews(List<DataPoint> dataPoints, String offset) {
-        ListViewAdapter adapter = new ListViewAdapter(getContext(), dataPoints, offset);
+    private void updateViews(List<DataPoint> dataPoints) {
+        ListViewAdapter adapter = new ListViewAdapter(getContext(), dataPoints);
         listView.setAdapter(adapter);
     }
 

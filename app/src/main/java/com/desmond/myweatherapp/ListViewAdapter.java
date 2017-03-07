@@ -13,6 +13,7 @@ import com.johnhiott.darkskyandroidlib.models.DataPoint;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Created by neverknows on 07-Mar-17.
@@ -21,12 +22,10 @@ import java.util.List;
 public class ListViewAdapter extends BaseAdapter {
     private Context context;
     private List<DataPoint> data;
-    private String offset;
 
-    public ListViewAdapter(Context context, List<DataPoint>data, String offset) {
+    public ListViewAdapter(Context context, List<DataPoint>data) {
         this.context = context;
         this.data = data;
-        this.offset = offset;
     }
     @Override
     public int getCount() {
@@ -45,7 +44,7 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
-        ViewHolder holder = null;
+        ViewHolder holder;
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
@@ -70,11 +69,13 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private String getTime(long milliSeconds) {
-        long exactTimeInMillis = milliSeconds + (Integer.parseInt(offset) * 60 * 60 * 1000);
+    private String getTime(long seconds) {
+        long timeInMillis = seconds * 1000;
         SimpleDateFormat formatter = new SimpleDateFormat("hh:mm a");
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(exactTimeInMillis);
+        TimeZone tz = calendar.getTimeZone();
+        formatter.setTimeZone(tz);
+        calendar.setTimeInMillis(timeInMillis);
         return formatter.format(calendar.getTime());
     }
 

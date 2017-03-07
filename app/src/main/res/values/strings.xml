@@ -2,5 +2,9 @@
     <string name="app_name">My Weather App</string>
     <string name="loading">Loading...</string>
     <string name="unable_to_retrieve_your_location">Unable to retrieve your location</string>
+    <string name="error_while_loading_result">Error while loading result</string>
     <string name="degree_celcius">%.0f°C</string>
+    <string name="pressure">Pressure: %s mbar</string>
+    <string name="humidity">Humidity: %s</string>
+    <string name="wind_speed">Wind Speed: %s km/h</string>
 </resources>

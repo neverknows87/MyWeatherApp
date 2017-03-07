@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements MyLocationCallbac
         Request request = new Request();
         request.setLat(Double.toString(latitude));
         request.setLng(Double.toString(longitude));
-        request.setUnits(Request.Units.UK);
+        request.setUnits(Request.Units.SI);
         request.setLanguage(Request.Language.ENGLISH);
         request.addExcludeBlock(Request.Block.DAILY);
         request.addExcludeBlock(Request.Block.MINUTELY);
@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements MyLocationCallbac
             @Override
             public void failure(RetrofitError retrofitError) {
                 Log.d(TAG, "Error while calling: " + retrofitError.getUrl());
+                Toast.makeText(getApplicationContext(), R.string.error_while_loading_result, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -166,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements MyLocationCallbac
         Toast.makeText(getApplicationContext(), R.string.unable_to_retrieve_your_location, Toast.LENGTH_SHORT).show();
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
