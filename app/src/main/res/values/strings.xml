@@ -6,5 +6,5 @@
     <string name="degree_celcius">%.0f°C</string>
     <string name="pressure">Pressure: %s mbar</string>
     <string name="humidity">Humidity: %s</string>
-    <string name="wind_speed">Wind Speed: %s km/h</string>
+    <string name="wind_speed">Wind Speed: %s m/s</string>
 </resources>
